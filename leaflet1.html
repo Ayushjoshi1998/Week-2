@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Our first Leaflet map</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+	     integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+	     crossorigin=""/>
+			 <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+     crossorigin=""></script>
+		<style>
+			#map { height: 95vh; }
+		</style>
+<!--vh is for viewheigh in percentages-->
+</head>
+
+<body>
+	<div id="map"></div>
+	<script>
+//L.map selects the map from leaflet. ('map') selects the id. .setView determines where the map starts out when you first open it
+			var map = L.map('map').setView([51.505, -0.09], 16);
+
+						L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			    maxZoom: 19,
+			    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+			}).addTo(map);
+			var marker = L.marker([51.5, -0.09]).addTo(map);
+			marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+// <!-- the openpopup syntax makes the marker display the popup by default without clickig anything, delete it to remove it
+	</script>
+</body>
+</html>
+
+<!--You will need a Mapbox API key to make your demo map. You may use this key of mine for the in-class activity, but you may not use it for Lab 3
+	My key: pk.eyJ1IjoiZWpzbGdyIiwiYSI6ImNrMnBtbDF0YzA1d2UzbnJtbHMxcWltOTIifQ.MY_BZXu-EPtwTlxsI_zgcQ
+-->
